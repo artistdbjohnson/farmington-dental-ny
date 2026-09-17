@@ -1,0 +1,109 @@
+{
+  "brand": "Farmington Dental",
+  "phone": "585-398-2100",
+  "phoneTel": "+15853982100",
+  "email": "Office@FarmingtonDentalNY.com",
+  "address": [
+    "1637 State Route 332",
+    "Farmington, NY 14425"
+  ],
+  "hours": "Monday – Thursday 8:00 AM – 5:00 PM\nFriday hours by appointment",
+  "serving": "Serving the Finger Lakes and Rochester areas with a convenient location in Farmington, NY – just a short drive from Victor, Canandaigua, Bloomfield, or Pittsford!",
+  "aboutEyebrow": "ABOUT US",
+  "aboutTitle": "Experience the Farmington Dental Difference!",
+  "aboutSubtitle": "Expert Dental Care in a Relaxed and Friendly Environment",
+  "aboutBody": [
+    "We strive to offer excellent dentistry in a welcoming and caring environment, where patients are comfortable and feel at ease. We listen to our patients, taking their needs and concerns seriously. We believe in taking a conservative approach to our treatment recommendations and know that fully informed patients are an important part of the process. We will work with you to determine the best treatment plan to meet your needs.",
+    "The whole family is welcome",
+    "We have the experience and expertise to care for patients of all ages - from infancy through the senior years. Our youngest patients need special attention to care for baby teeth and receive early education about brushing, flossing, and maintaining overall oral health. We take time to ensure that all our patients, at every age, are able to ask questions and feel comfortable with their treatment.",
+    "We are highly reviewed",
+    "Our patients love us and are happy to let others know! Be sure to check out our hundreds of positive reviews on google!"
+  ],
+  "whyChooseTitle": "Why Choose Farmington Dental?",
+  "whyChoose": [
+    "A trusted and well-established provider",
+    "Welcoming and caring environment",
+    "Conservative approach to treatment",
+    "Most current technology in a modern office",
+    "Informative and patient-focused",
+    "Specialized treatment for the whole family",
+    "Expert preventive and restorative care",
+    "Cosmetic dentistry, veneers, crowns, and dentures",
+    "Invisalign® orthodontics",
+    "Emergency Dental Care",
+    "Hundreds of positive reviews"
+  ],
+  "welcomeClose": "Your smile and your dental health are important to us! We welcome new patients to our practice and look forward to hearing from you!",
+  "services": {
+    "Preventative Care": "Our main purpose is to help you maintain a healthy smile. At each prophylaxis (cleaning) appointment, we complete a comprehensive examination of not only your gums and teeth but head and neck area as well. This includes taking digital radiographs (if needed), an oral cancer screening and evaluation of the temporomandibular joint (TMJ). Fluoride treatment, nutrition counseling, and sealants are offered as needed.",
+    "Cosmetic Dentistry": "This happens to be Dr. Sturn's favorite area of dentistry! We want every patient to have the smile they've always dreamed of. We would love the opportunity to sit down with you and discuss how we can help you reach that goal. Some of the cosmetic services we offer include whitening, veneers, crowns, and implants.",
+    "Restorative Dentistry": "If you do have a problem with a tooth, we are here to help. Whether your tooth becomes decayed, is chipped, cracked or even breaks, we have a solution. If it is a small issue, it can likely be resolved with a composite (tooth-colored) \"filling\". Larger problems can be taken care of with crowns, bridges, or implants. We can also help if your needs include partials or dentures (implant-supported or traditional) to replace more extensive areas of missing teeth.",
+    "Emergency Dentistry": "If you're in pain, chances are you need help right away, not in two weeks from now! We understand that and make every effort to offer same day treatment for our existing patients. In fact, we set aside time in our schedules so that we can accommodate our patients should they have an unexpected issue that needs immediate attention.",
+    "Pediatric Dentistry": "Did we mention we love seeing kids at our office? Exams, cleanings, fluoride application, orthodontic intervention, space maintenance, whatever your child needs, we've got you covered. And yes, they can expect to visit the treasure chest at the end of each visit!",
+    "Endodontic Care (Root Canals)": "Even saying the words \"root canal\" out loud can make most people shudder. We are here to tell you, they are really no big deal! If a tooth becomes infected or a cavity gets too big, it can enter the nerve canal of a tooth, causing pain. Root canal therapy is then required to save the tooth. The most typical comment we get after a patient finishes a root canal procedure at our office is, \"That's it? That wasn't bad at all!\""
+  },
+  "team": {
+    "doctor": {
+      "name": "Dr. Alicia Sturn",
+      "title": "DDS"
+    },
+    "hygienists": [
+      "Corrie",
+      "Jennifer K",
+      "Melanie",
+      "Kristen",
+      "Kaylin",
+      "Tina",
+      "Jennifer M"
+    ],
+    "admin": [
+      "Abby"
+    ]
+  },
+  "reviews": [
+    {
+      "quote": "Exceptional dental experience!! Today was my first appointment at Farmington Dental and my visit was wonderful from the beginning to the end! Every member of the team was friendly, engaging and knowledgeable. Dr. Sturn and her staff made the appointment I was dreading feel like a visit with friends!! Also the office is beyond beautiful!! If you have to go to the dentist this is the place to go!",
+      "by": "Amy P"
+    },
+    {
+      "quote": "A pleasure being a patient at Farmington Dental! Professional, kind, informative, helpful…they check all the boxes!",
+      "by": "Dea J"
+    },
+    {
+      "quote": "Wonderful experience, state-of-the art building, comfortable waiting room, office personnel cheerful and well versed in insurance protocol. Doctor Sturn and the hygienist - incredibly talented. I'm a sixty-five year old man who has had his teeth clean by many dental hygienists, and this was the best experience I have ever had by far. I would recommend Farmington Dental to my family, friends, and anyone looking for a friendly professional dental care resource center!",
+      "by": "Kenny R"
+    },
+    {
+      "quote": "I had my first appointment with Farmington Dental last week, and it was a great experience like no other! Going to a new dentist can be stressful, but I felt assured and comfortable the entire time. Everyone employed there treated me with utmost kindness and patience. When I left, I also felt very informed about proper dental care moving forward; things I was doing well and things I should keep in mind. Thanks so much!!",
+      "by": "Brian H"
+    },
+    {
+      "quote": "Incredible care. Amazing Doctor. Wonderful staff. 10/10.",
+      "by": "Matthew P"
+    },
+    {
+      "quote": "This is a wonderful dental practice - the best one I’ve ever received care from. They are attentive, caring, communicative and responsive to patient needs. Scheduling and rescheduling when needed is a breeze, and I always know what to expect with billing and my insurance. Definitely 5 stars. If you’re in need of a new dentist, I highly recommend Farmington Dental.",
+      "by": "Caitlin M"
+    },
+    {
+      "quote": "A great office! … Dr. Sturn is always meticulous and thoughtful in her work and has great bedside manner. I can't recommend this office enough. Thanks!",
+      "by": "David D"
+    }
+  ],
+  "patientInfo": [
+    {
+      "label": "New Patient Forms",
+      "href": "https://patientviewer.com/WebFormsGWT/GWT/WebForms/WebForms.html?DOID=35361&RKID=13139&WSDID=177047&NFID=32370&NFID=177044&NFID=33045"
+    },
+    {
+      "label": "Existing Patient - Update Information",
+      "href": "https://patientviewer.com/WebFormsGWT/GWT/WebForms/WebForms.html?DOID=35361&RKID=13139&WSDID=174269"
+    },
+    {
+      "label": "Notice of Privacy Practices (HIPAA)",
+      "href": "https://patientviewer.com/WebFormsGWT/GWT/WebForms/WebForms.html?DOID=35361&RKID=13139&WSDID=179180"
+    }
+  ],
+  "payment": "https://payportal.patientviewer.com?cid=eDrAlcJE",
+  "source": "https://www.farmingtondentalny.com/"
+}
