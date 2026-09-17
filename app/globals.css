@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --color-navy: #0c3c60;
+  --color-blue: #1d67cd;
+  --color-sky: #689ade;
+  --color-mist: #daedff;
+  --color-steel: #39729b;
+  --color-teal: #86a69e;
+  --color-ink: #2f2e2e;
+  --color-cloud: #e2e2e2;
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+}
+
+:root,
+html.light {
+  --bg: #eef4f8;
+  --bg-elev: #ffffff;
+  --ink: #2f2e2e;
+  --ink-soft: #39729b;
+  --muted: rgba(47, 46, 46, 0.62);
+  --line: rgba(12, 60, 96, 0.12);
+  --hero-veil: linear-gradient(
+    180deg,
+    rgba(7, 21, 32, 0.28) 0%,
+    rgba(12, 60, 96, 0.35) 42%,
+    rgba(7, 21, 32, 0.78) 100%
+  );
+}
+
+html.dark {
+  --bg: #07151f;
+  --bg-elev: #0b2c46;
+  --ink: #e2e2e2;
+  --ink-soft: #daedff;
+  --muted: rgba(218, 237, 255, 0.64);
+  --line: rgba(218, 237, 255, 0.12);
+  --hero-veil: linear-gradient(
+    180deg,
+    rgba(4, 12, 20, 0.35) 0%,
+    rgba(7, 21, 32, 0.45) 40%,
+    rgba(4, 12, 20, 0.82) 100%
+  );
+}
+
+* {
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100%;
+}
+
+::selection {
+  background: #689ade;
+  color: #07151f;
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+html.light .liquid-glass {
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.62),
+    0 10px 30px rgba(12, 60, 96, 0.06);
+}
+
+html.light .liquid-glass::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(104, 154, 222, 0.28) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(134, 166, 158, 0.22) 80%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+}
+
+html.light .on-hero .liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+html.light .on-hero .liquid-glass::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+}
+
+.liquid-glass.liquid-glass-panel {
+  background: #0b1c28;
+  background-blend-mode: normal;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.hero-still {
+  animation: kenburns 28s ease-out forwards;
+  will-change: transform;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.4%, 1.2%, 0);
+  }
+}
+
+.rail-underline {
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(218, 237, 255, 0.95),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(104, 154, 222, 0.55);
+}
+
+html.light .is-stuck .rail-underline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(29, 103, 205, 0.9),
+    transparent
+  );
+}
+
+.section-shell {
+  scroll-margin-top: 6.5rem;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-still {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
