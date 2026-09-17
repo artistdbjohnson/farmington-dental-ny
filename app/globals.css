@@ -139,6 +139,13 @@ html.light .on-hero .liquid-glass::before {
   );
 }
 
+.liquid-glass.liquid-glass-panel {
+  background: #0b1c28;
+  background-blend-mode: normal;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
 .hero-still {
   animation: kenburns 28s ease-out forwards;
   will-change: transform;

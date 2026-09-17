@@ -36,7 +36,7 @@ export function Chrome({
       className={cn(
         "fixed top-0 right-0 left-0 z-50 transition-colors",
         onHero ? "on-hero" : "is-stuck",
-        scrolled && "bg-[color:var(--bg)]/55 backdrop-blur-md",
+        scrolled && "bg-[color:var(--bg)]/88 backdrop-blur-md",
       )}
     >
       <a
@@ -140,7 +140,12 @@ export function Chrome({
           </a>
           <ExtLink
             href={links.newPatientForms}
-            className="hidden rounded-full bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-white/90 lg:inline-flex"
+            className={cn(
+              "hidden rounded-full px-4 py-2.5 text-sm font-medium transition-colors lg:inline-flex",
+              onHero
+                ? "bg-white text-black hover:bg-white/90"
+                : "bg-navy text-white hover:bg-blue dark:bg-white dark:text-black dark:hover:bg-white/90",
+            )}
           >
             {t.chrome.patientForms}
           </ExtLink>
@@ -190,7 +195,7 @@ export function Chrome({
             transition={{ duration: reduce ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="on-hero absolute top-[72px] right-4 left-4 z-30 md:hidden"
           >
-            <div className="liquid-glass flex flex-col gap-1 rounded-2xl p-4">
+            <div className="liquid-glass liquid-glass-panel flex flex-col gap-1 rounded-2xl p-4">
             {RAIL.map((item) => (
               <a
                 key={item.id}
@@ -214,7 +219,7 @@ export function Chrome({
             <div className="mt-2 flex gap-2 border-t border-white/10 pt-3">
               <a
                 href={links.phoneTel}
-                className="liquid-glass flex-1 rounded-full px-4 py-2.5 text-center text-sm font-medium text-white"
+                className="flex-1 rounded-full border border-white/35 bg-white/10 px-4 py-2.5 text-center text-sm font-medium text-white"
               >
                 {t.chrome.callNow}
               </a>
