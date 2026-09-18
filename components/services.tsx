@@ -113,12 +113,22 @@ export function Services() {
                         className="overflow-hidden"
                       >
                         <div className="px-3 pb-3 sm:px-4 sm:pb-4">
-                          <PhotoPlate
-                            src={plate.src}
-                            alt=""
-                            sizes="(min-width: 768px) 720px, 100vw"
-                            className="mb-3 aspect-[16/9] rounded-xl"
-                          />
+                          <div className="relative mb-3 overflow-hidden rounded-xl">
+                            <PhotoPlate
+                              src={plate.src}
+                              alt=""
+                              sizes="(min-width: 768px) 960px, 100vw"
+                              className="aspect-[16/9] min-h-[180px] sm:min-h-[240px]"
+                            />
+                            <span
+                              className={cn(
+                                "absolute top-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br text-white shadow-sm",
+                                plate.plate,
+                              )}
+                            >
+                              <Icon size={15} strokeWidth={1.6} />
+                            </span>
+                          </div>
                           <div
                             className={cn(
                               "liquid-glass overflow-hidden rounded-xl bg-linear-to-br p-[1px]",

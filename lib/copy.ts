@@ -53,32 +53,32 @@ export const servicePlates: Record<
   "Preventative Care": {
     plate: "from-[#0C3C60] via-[#39729B] to-[#689ADE]",
     nest: "from-[#0C3C60]/80 to-[#86A69E]/40",
-    src: "/media/preventative.jpg",
+    src: "/media/01-preventative.png",
   },
   "Cosmetic Dentistry": {
     plate: "from-[#1D67CD] via-[#689ADE] to-[#DAEDFF]",
     nest: "from-[#1D67CD]/70 to-[#86A69E]/35",
-    src: "/media/cosmetic.jpg",
+    src: "/media/02-cosmetic.png",
   },
   "Restorative Dentistry": {
     plate: "from-[#0C3C60] via-[#86A69E] to-[#39729B]",
     nest: "from-[#0C3C60]/75 to-[#689ADE]/35",
-    src: "/media/restorative.jpg",
+    src: "/media/03-restorative.png",
   },
   "Emergency Dentistry": {
     plate: "from-[#1D67CD] via-[#0C3C60] to-[#39729B]",
     nest: "from-[#1D67CD]/70 to-[#0C3C60]/80",
-    src: "/media/emergency.jpg",
+    src: "/media/04-emergency.png",
   },
   "Pediatric Dentistry": {
     plate: "from-[#689ADE] via-[#86A69E] to-[#DAEDFF]",
     nest: "from-[#689ADE]/50 to-[#86A69E]/40",
-    src: "/media/pediatric.jpg",
+    src: "/media/05-pediatric.png",
   },
   "Endodontic Care (Root Canals)": {
     plate: "from-[#39729B] via-[#0C3C60] to-[#86A69E]",
     nest: "from-[#39729B]/70 to-[#0C3C60]/75",
-    src: "/media/endodontic.jpg",
+    src: "/media/06-endodontic.png",
   },
 };
 

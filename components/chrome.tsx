@@ -77,7 +77,7 @@ export function Chrome({
 
       <div
         className={cn(
-          "grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 px-5 sm:px-8 lg:gap-6 xl:gap-8",
+          "grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-5 px-5 sm:px-8 xl:gap-8",
           scrolled ? "py-2.5" : "py-4 sm:py-5",
         )}
       >
@@ -117,7 +117,7 @@ export function Chrome({
         </a>
 
         <nav
-          className="liquid-glass hidden items-center gap-0.5 rounded-xl px-3.5 py-2 md:flex lg:gap-1 lg:px-4"
+          className="liquid-glass hidden min-w-0 items-center justify-self-center gap-0.5 rounded-xl px-3 py-2 md:flex lg:gap-1 lg:px-4"
           aria-label="Primary"
         >
           {RAIL.map((item) => {
@@ -128,7 +128,7 @@ export function Chrome({
                 href={`#${item.id}`}
                 onClick={(event) => goTo(event, item.id)}
                 className={cn(
-                  "relative flex items-center whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm transition-colors lg:px-3.5",
+                  "relative flex items-center whitespace-nowrap rounded-md px-2 py-1.5 text-sm transition-colors lg:px-3",
                   onHero
                     ? current
                       ? "bg-white/15 text-white"
@@ -175,7 +175,7 @@ export function Chrome({
           <ExtLink
             href={links.newPatientForms}
             className={cn(
-              "hidden shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-medium transition-colors xl:inline-flex",
+              "hidden shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-medium transition-colors 2xl:inline-flex",
               onHero
                 ? "bg-white text-black hover:bg-white/90"
                 : "bg-navy text-white hover:bg-blue dark:bg-white dark:text-black dark:hover:bg-white/90",
