@@ -72,3 +72,6 @@ Question: ceremonial entry for a single-location dental Path A.
 The hero still is the same Grok operatory-dawn plate so the fade stays one world (the old blue blur is retired as the hero plate).  
 Nav gutters, measured hash scroll, and ad-grade section/service plates stay in scope.  
 Grok Imagine stills produced for the vote; the assembled MP4 is retired so Farmington does not ship a BRA-shaped video entry.
+
+## Identity lock — DEFAULT (2026-09-18)
+Published Farmington staff portraits are the only clinician faces. Grok Imagine retextures those exact people into Team / About (and any plate that needs a clinician). No invented doctor faces when a source portrait exists. Editorial service plates stay as-is.
