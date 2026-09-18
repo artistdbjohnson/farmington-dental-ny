@@ -218,8 +218,8 @@ html.light .is-stuck .rail-underline {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(12, 60, 96, 0.06) 0%,
-    rgba(7, 21, 32, 0.2) 100%
+    rgba(12, 60, 96, 0.02) 0%,
+    rgba(7, 21, 32, 0.1) 100%
   );
 }
 
