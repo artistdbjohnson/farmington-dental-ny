@@ -55,3 +55,19 @@ Exact public marketing words from source. Zero invented clinical outcomes. Keep 
 - Studio lead sole main push
 
 Chassis UNBLOCKED — build proceeds.
+
+## Opening VOTE — LOCKED (2026-09-18)
+Quality floor remains https://txdiepflap.vercel.app/ (BRA craft, not a clone).  
+Question: ceremonial entry for a single-location dental Path A.
+
+| Option | Vote | Why |
+| --- | --- | --- |
+| BRA-style splash video | Reject | BRA already owns the full-bleed intro MP4. Cloning it on Farmington reads as portfolio copy, stacks a trailer on top of the equilibrium Ken Burns hero, and over-weights a relaxed family practice. Video is not mandatory and does not clearly win. |
+| Simple quiet open | Reject | Lands on the hero with no entry beat. Undershoots the BRA quality floor. |
+| Still poster fade | **WIN** | Same overlay craft as BRA (fixed z-100, poster still, Enter Site, 3.5s cubic fade, `sessionStorage` once, skip hash / reduced-motion) without the video signature. Grok Imagine operatory-dawn still. Calm, premium, Path A. |
+| Scroll hero only | Runner-up | Immediate CTAs, max variety. Loses the ceremonial floor the lock asked to match. |
+| Micro-loader | Reject | App chrome. Wrong register for a local clinic. |
+
+**Locked open:** still-poster splash → soft multi-second fade into the existing equilibrium hero.  
+Nav gutters, measured hash scroll, and ad-grade section/service plates stay in scope.  
+Grok Imagine stills produced for the vote; the assembled MP4 is retired so Farmington does not ship a BRA-shaped video entry.

@@ -11,8 +11,7 @@ import { usePrefs } from "@/lib/prefs";
 
 const INTRO_KEY = "fd-intro-seen";
 const FADE_MS = 3700;
-const ENTER_AT = 8;
-const REDUCED_HOLD_MS = 1200;
+const POSTER_HOLD_MS = 2200;
 
 type Phase = "showing" | "fading" | "hidden";
 
@@ -38,13 +37,7 @@ export function Splash() {
   );
   const [phase, setPhase] = useState<Phase>("showing");
   const overlayRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const entered = useRef(false);
-  const reduce = useSyncExternalStore(
-    subscribeIntro,
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  );
 
   const enterSite = useCallback(() => {
     if (entered.current) return;
@@ -84,34 +77,9 @@ export function Splash() {
 
   useEffect(() => {
     if (skipIntro || phase !== "showing") return;
-
-    if (reduce) {
-      const hold = window.setTimeout(enterSite, REDUCED_HOLD_MS);
-      return () => window.clearTimeout(hold);
-    }
-
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.playsInline = true;
-
-    const onTime = () => {
-      if (video.currentTime >= ENTER_AT) enterSite();
-    };
-    const onEnded = () => {
-      window.setTimeout(enterSite, 400);
-    };
-
-    video.addEventListener("timeupdate", onTime);
-    video.addEventListener("ended", onEnded);
-    const play = video.play();
-    if (play?.catch) play.catch(() => {});
-
-    return () => {
-      video.removeEventListener("timeupdate", onTime);
-      video.removeEventListener("ended", onEnded);
-    };
-  }, [enterSite, phase, reduce, skipIntro]);
+    const hold = window.setTimeout(enterSite, POSTER_HOLD_MS);
+    return () => window.clearTimeout(hold);
+  }, [enterSite, phase, skipIntro]);
 
   if (skipIntro || phase === "hidden") return null;
 
@@ -125,18 +93,6 @@ export function Splash() {
       aria-label={t.brand}
       aria-modal="true"
     >
-      {reduce ? null : (
-        <video
-          ref={videoRef}
-          className="splash-video"
-          src="/media/intro.mp4"
-          poster="/media/intro-poster.jpg"
-          preload="auto"
-          autoPlay
-          muted
-          playsInline
-        />
-      )}
       <div className="splash-veil" />
       <div className="splash-chrome">
         {/* Decorative overlay mark; native img avoids next/image decode delay on the splash. */}

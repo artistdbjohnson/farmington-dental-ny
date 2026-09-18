@@ -49,7 +49,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <link rel="preload" as="image" href="/media/intro-poster.jpg" />
-        <link rel="preload" as="video" type="video/mp4" href="/media/intro.mp4" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">
