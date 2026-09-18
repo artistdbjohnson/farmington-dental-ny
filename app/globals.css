@@ -190,7 +190,9 @@ html.light .is-stuck .rail-underline {
 
 .section-shell,
 .anchor-under-nav {
-  scroll-margin-top: var(--sticky-nav-h);
+  /* Offset lives on html scroll-padding-top only — stacking both
+     doubles the empty band under the sticky chrome. */
+  scroll-margin-top: 0;
 }
 
 .no-scrollbar {
