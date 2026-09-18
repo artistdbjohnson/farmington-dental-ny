@@ -9,6 +9,7 @@ import { Hero } from "@/components/hero";
 import { PatientInfo } from "@/components/patient-info";
 import { Reviews } from "@/components/reviews";
 import { Services } from "@/components/services";
+import { Splash } from "@/components/splash";
 import { Team } from "@/components/team";
 import { RAIL } from "@/lib/copy";
 import { scrollToAnchor } from "@/lib/scroll";
@@ -57,6 +58,7 @@ export function Site() {
 
   return (
     <>
+      <Splash />
       <Chrome scrolled={scrolled} active={active} />
       <main id="content">
         <Hero />

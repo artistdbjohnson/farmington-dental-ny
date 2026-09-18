@@ -226,6 +226,7 @@ export type Dictionary = {
     light: string;
     dark: string;
     builtBy: string;
+    enterSite: string;
     rail: Record<RailId, string>;
   };
 };
@@ -256,6 +257,7 @@ const chromeEn: Dictionary["chrome"] = {
   light: "Light",
   dark: "Dark",
   builtBy: "built by dglxss",
+  enterSite: "Enter Site",
   rail: {
     about: "About",
     services: "Services",
@@ -292,6 +294,7 @@ const chromePt: Dictionary["chrome"] = {
   light: "Claro",
   dark: "Escuro",
   builtBy: "construído por dglxss",
+  enterSite: "Entrar no site",
   rail: {
     about: "Sobre",
     services: "Serviços",
