@@ -201,6 +201,8 @@ html.light .is-stuck .rail-underline {
 #patient-info,
 #contact,
 #content {
+  /* Same token as html scroll-padding-top. JS nav uses measured header height
+     so these two do not stack into an empty band above the heading. */
   scroll-margin-top: calc(
     var(--sticky-nav-height) + env(safe-area-inset-top, 0px)
   );
