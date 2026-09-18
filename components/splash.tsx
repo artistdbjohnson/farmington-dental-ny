@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { usePrefs } from "@/lib/prefs";
 
 const INTRO_KEY = "fd-intro-seen";
@@ -8,7 +14,7 @@ const FADE_MS = 3700;
 const ENTER_AT = 8;
 const REDUCED_HOLD_MS = 1200;
 
-type IntroState = "boot" | "showing" | "fading" | "hidden";
+type Phase = "showing" | "fading" | "hidden";
 
 function shouldSkipIntro() {
   try {
@@ -19,12 +25,26 @@ function shouldSkipIntro() {
   }
 }
 
+function subscribeIntro() {
+  return () => {};
+}
+
 export function Splash() {
   const { t } = usePrefs();
-  const [intro, setIntro] = useState<IntroState>("boot");
+  const skipIntro = useSyncExternalStore(
+    subscribeIntro,
+    shouldSkipIntro,
+    () => true,
+  );
+  const [phase, setPhase] = useState<Phase>("showing");
   const overlayRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const entered = useRef(false);
+  const reduce = useSyncExternalStore(
+    subscribeIntro,
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  );
 
   const enterSite = useCallback(() => {
     if (entered.current) return;
@@ -34,23 +54,21 @@ export function Splash() {
     } catch {
       /* ignore */
     }
-    setIntro((prev) => (prev === "showing" ? "fading" : prev));
+    setPhase((prev) => (prev === "showing" ? "fading" : prev));
   }, []);
 
-  useLayoutEffect(() => {
-    if (shouldSkipIntro()) {
+  useEffect(() => {
+    if (skipIntro) {
       document.documentElement.removeAttribute("data-intro");
       document.documentElement.style.overflow = "";
-      setIntro("hidden");
       return;
     }
     document.documentElement.setAttribute("data-intro", "show");
     document.documentElement.style.overflow = "hidden";
-    setIntro("showing");
-  }, []);
+  }, [skipIntro]);
 
   useEffect(() => {
-    if (intro !== "fading") return;
+    if (phase !== "fading") return;
     const overlay = overlayRef.current;
     requestAnimationFrame(() => {
       if (overlay) {
@@ -60,14 +78,13 @@ export function Splash() {
     });
     document.documentElement.style.overflow = "";
     document.documentElement.removeAttribute("data-intro");
-    const hide = window.setTimeout(() => setIntro("hidden"), FADE_MS);
+    const hide = window.setTimeout(() => setPhase("hidden"), FADE_MS);
     return () => window.clearTimeout(hide);
-  }, [intro]);
+  }, [phase]);
 
   useEffect(() => {
-    if (intro !== "showing") return;
+    if (skipIntro || phase !== "showing") return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       const hold = window.setTimeout(enterSite, REDUCED_HOLD_MS);
       return () => window.clearTimeout(hold);
@@ -94,13 +111,9 @@ export function Splash() {
       video.removeEventListener("timeupdate", onTime);
       video.removeEventListener("ended", onEnded);
     };
-  }, [enterSite, intro]);
+  }, [enterSite, phase, reduce, skipIntro]);
 
-  if (intro === "boot" || intro === "hidden") return null;
-
-  const reduce =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (skipIntro || phase === "hidden") return null;
 
   const [farmington, dental] = t.brand.split(" ");
 
@@ -126,6 +139,8 @@ export function Splash() {
       )}
       <div className="splash-veil" />
       <div className="splash-chrome">
+        {/* Decorative overlay mark; native img avoids next/image decode delay on the splash. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/brand/logo-mark.png"
           alt=""
