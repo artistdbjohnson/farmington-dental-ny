@@ -52,8 +52,21 @@ html.dark {
   font-family: var(--font-sans);
 }
 
+:root {
+  --sticky-nav-height: 7.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --sticky-nav-height: 5.5rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(
+    var(--sticky-nav-height) + env(safe-area-inset-top, 0px)
+  );
 }
 
 body {
@@ -180,8 +193,40 @@ html.light .is-stuck .rail-underline {
   );
 }
 
-.section-shell {
-  scroll-margin-top: 6.5rem;
+.section-anchor,
+#about,
+#services,
+#team,
+#reviews,
+#patient-info,
+#contact,
+#content {
+  scroll-margin-top: calc(
+    var(--sticky-nav-height) + env(safe-area-inset-top, 0px)
+  );
+}
+
+#top {
+  scroll-margin-top: 0;
+}
+
+.photo-plate-grade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 60, 96, 0.06) 0%,
+    rgba(7, 21, 32, 0.2) 100%
+  );
+}
+
+html.light .photo-plate-grade {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 60, 96, 0.03) 0%,
+    rgba(12, 60, 96, 0.12) 100%
+  );
 }
 
 .no-scrollbar {

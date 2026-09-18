@@ -8,8 +8,8 @@ export function Team() {
   const { t } = usePrefs();
 
   return (
-    <section id="team" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+      <div id="team" className="section-anchor mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.meetTeam}
         </p>

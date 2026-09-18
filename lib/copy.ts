@@ -48,33 +48,46 @@ export type ServiceKey = (typeof SERVICE_KEYS)[number];
 
 export const servicePlates: Record<
   ServiceKey,
-  { plate: string; nest: string }
+  { plate: string; nest: string; src: string }
 > = {
   "Preventative Care": {
     plate: "from-[#0C3C60] via-[#39729B] to-[#689ADE]",
     nest: "from-[#0C3C60]/80 to-[#86A69E]/40",
+    src: "/media/preventative.jpg",
   },
   "Cosmetic Dentistry": {
     plate: "from-[#1D67CD] via-[#689ADE] to-[#DAEDFF]",
     nest: "from-[#1D67CD]/70 to-[#86A69E]/35",
+    src: "/media/cosmetic.jpg",
   },
   "Restorative Dentistry": {
     plate: "from-[#0C3C60] via-[#86A69E] to-[#39729B]",
     nest: "from-[#0C3C60]/75 to-[#689ADE]/35",
+    src: "/media/restorative.jpg",
   },
   "Emergency Dentistry": {
     plate: "from-[#1D67CD] via-[#0C3C60] to-[#39729B]",
     nest: "from-[#1D67CD]/70 to-[#0C3C60]/80",
+    src: "/media/emergency.jpg",
   },
   "Pediatric Dentistry": {
     plate: "from-[#689ADE] via-[#86A69E] to-[#DAEDFF]",
     nest: "from-[#689ADE]/50 to-[#86A69E]/40",
+    src: "/media/pediatric.jpg",
   },
   "Endodontic Care (Root Canals)": {
     plate: "from-[#39729B] via-[#0C3C60] to-[#86A69E]",
     nest: "from-[#39729B]/70 to-[#0C3C60]/75",
+    src: "/media/endodontic.jpg",
   },
 };
+
+export const sectionPlates = {
+  about: "/media/about-clinic.jpg",
+  reviews: "/media/reviews.jpg",
+  patientInfo: "/media/patient-info.jpg",
+  contact: "/media/contact.jpg",
+} as const;
 
 type RailId =
   | "about"
