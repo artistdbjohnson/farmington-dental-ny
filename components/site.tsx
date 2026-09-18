@@ -11,6 +11,19 @@ import { Reviews } from "@/components/reviews";
 import { Services } from "@/components/services";
 import { Team } from "@/components/team";
 import { RAIL } from "@/lib/copy";
+import { serviceMedia } from "@/lib/media";
+
+const SERVICE_SLUGS = new Set(
+  Object.values(serviceMedia).map((item) => item.slug),
+);
+
+function scrollHashIntoView() {
+  const id = window.location.hash.replace(/^#/, "");
+  if (!id) return;
+  const target = document.getElementById(id);
+  if (!target) return;
+  target.scrollIntoView({ block: "start" });
+}
 
 export function Site() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,6 +56,24 @@ export function Site() {
 
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const sync = () => {
+      const id = window.location.hash.replace(/^#/, "");
+      if (SERVICE_SLUGS.has(id)) {
+        setActive("services");
+      }
+      window.requestAnimationFrame(() => {
+        scrollHashIntoView();
+        window.setTimeout(scrollHashIntoView, 80);
+        window.setTimeout(scrollHashIntoView, 220);
+      });
+    };
+
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
   }, []);
 
   return (

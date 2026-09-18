@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { ExtLink } from "@/components/ext-link";
+import { Plate } from "@/components/plate";
 import { links } from "@/lib/copy";
+import { SECTION_PAD, sectionMedia } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 export function Contact() {
@@ -22,14 +24,23 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+    <section id="contact" className={SECTION_PAD}>
       <div className="mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.contactUs}
         </p>
-        <h2 className="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
+        <h2 className="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
           {t.chrome.contactUs}
         </h2>
+
+        <figure className="liquid-glass mb-8 overflow-hidden rounded-3xl">
+          <Plate
+            src={sectionMedia.contact.src}
+            alt={sectionMedia.contact.alt}
+            className="aspect-[16/8] sm:aspect-[16/6]"
+            sizes="(min-width: 1024px) 1152px, 100vw"
+          />
+        </figure>
 
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-4">

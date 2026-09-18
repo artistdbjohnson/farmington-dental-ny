@@ -2,6 +2,8 @@
 
 import { Check } from "lucide-react";
 import Image from "next/image";
+import { Plate } from "@/components/plate";
+import { SECTION_PAD, sectionMedia } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 export function About() {
@@ -10,7 +12,7 @@ export function About() {
     t.aboutBody;
 
   return (
-    <section id="about" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+    <section id="about" className={SECTION_PAD}>
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
@@ -51,14 +53,22 @@ export function About() {
               alt={`${t.brand} — ${"Dr. Alicia Sturn"}`}
               fill
               sizes="(min-width: 1024px) 480px, 100vw"
-              className="object-cover object-[50%_18%]"
+              className="object-cover object-[50%_18%] contrast-[1.03] saturate-[1.04]"
               priority
             />
           </div>
         </figure>
       </div>
 
-      <div className="mx-auto mt-16 max-w-6xl">
+      <div className="mx-auto mt-12 max-w-6xl">
+        <figure className="liquid-glass mb-12 overflow-hidden rounded-3xl">
+          <Plate
+            src={sectionMedia.about.src}
+            alt={sectionMedia.about.alt}
+            className="aspect-[16/8] sm:aspect-[16/7]"
+            sizes="(min-width: 1024px) 1152px, 100vw"
+          />
+        </figure>
         <h3 className="mb-6 text-2xl font-medium tracking-tight text-[color:var(--ink)] sm:text-3xl">
           {t.whyChooseTitle}
         </h3>

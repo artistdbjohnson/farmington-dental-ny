@@ -52,8 +52,13 @@ html.dark {
   font-family: var(--font-sans);
 }
 
+:root {
+  --sticky-nav-h: 4.75rem;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--sticky-nav-h);
 }
 
 body {
@@ -139,11 +144,14 @@ html.light .on-hero .liquid-glass::before {
   );
 }
 
-.liquid-glass.liquid-glass-panel {
+.liquid-glass.liquid-glass-panel,
+html.light .liquid-glass.liquid-glass-panel,
+html.light .on-hero .liquid-glass.liquid-glass-panel {
   background: #0b1c28;
   background-blend-mode: normal;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .hero-still {
@@ -180,8 +188,11 @@ html.light .is-stuck .rail-underline {
   );
 }
 
-.section-shell {
-  scroll-margin-top: 6.5rem;
+.section-shell,
+.anchor-under-nav {
+  /* Offset lives on html scroll-padding-top only — stacking both
+     doubles the empty band under the sticky chrome. */
+  scroll-margin-top: 0;
 }
 
 .no-scrollbar {

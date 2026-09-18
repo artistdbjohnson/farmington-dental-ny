@@ -9,13 +9,15 @@ import {
   Siren,
   Sparkles,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Plate } from "@/components/plate";
 import { cn } from "@/lib/cn";
 import {
   SERVICE_KEYS,
   servicePlates,
   type ServiceKey,
 } from "@/lib/copy";
+import { SECTION_PAD, serviceMedia } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 const ICONS: Record<ServiceKey, typeof ShieldPlus> = {
@@ -27,13 +29,45 @@ const ICONS: Record<ServiceKey, typeof ShieldPlus> = {
   "Endodontic Care (Root Canals)": HeartPulse,
 };
 
+function readServiceHash(): ServiceKey | "" {
+  if (typeof window === "undefined") return "";
+  const id = window.location.hash.replace(/^#/, "");
+  return (
+    SERVICE_KEYS.find((key) => serviceMedia[key].slug === id) ?? ""
+  );
+}
+
 export function Services() {
   const { t } = usePrefs();
   const reduce = useReducedMotion();
   const [open, setOpen] = useState<ServiceKey | "">("Preventative Care");
 
+  useEffect(() => {
+    const apply = () => {
+      const fromHash = readServiceHash();
+      if (fromHash) setOpen(fromHash);
+    };
+    apply();
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
+  }, []);
+
+  function toggle(key: ServiceKey) {
+    const next = open === key ? "" : key;
+    setOpen(next);
+    if (!next) return;
+    const slug = serviceMedia[key].slug;
+    window.history.replaceState(null, "", `#${slug}`);
+    window.requestAnimationFrame(() => {
+      document.getElementById(slug)?.scrollIntoView({
+        behavior: reduce ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  }
+
   return (
-    <section id="services" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+    <section id="services" className={SECTION_PAD}>
       <div className="mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.rail.services}
@@ -48,15 +82,26 @@ export function Services() {
               const Icon = ICONS[key];
               const isOpen = open === key;
               const copy = t.services[key];
+              const media = serviceMedia[key];
               return (
                 <article
                   key={key}
-                  className="liquid-glass rounded-2xl"
+                  id={media.slug}
+                  className="anchor-under-nav liquid-glass overflow-hidden rounded-2xl"
                 >
+                  <Plate
+                    src={media.src}
+                    alt={media.alt}
+                    className={cn(
+                      "mx-2 mt-2 rounded-xl sm:mx-3 sm:mt-3",
+                      isOpen ? "aspect-[16/9]" : "aspect-[21/9] sm:aspect-[16/7]",
+                    )}
+                    sizes="(min-width: 1024px) 880px, 100vw"
+                  />
                   <button
                     type="button"
                     aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? "" : key)}
+                    onClick={() => toggle(key)}
                     className="flex w-full items-center gap-3 px-4 py-4 text-left sm:px-5"
                   >
                     <span
@@ -108,8 +153,8 @@ export function Services() {
                               servicePlates[key].nest,
                             )}
                           >
-                            <div className="rounded-[10px] bg-[color:var(--bg-elev)]/55 p-4 sm:p-5">
-                              <p className="text-sm leading-relaxed text-[color:var(--muted)] sm:text-[15px]">
+                            <div className="overflow-hidden rounded-[10px] bg-[color:var(--bg-elev)]/55">
+                              <p className="p-4 text-sm leading-relaxed text-[color:var(--muted)] sm:p-5 sm:text-[15px]">
                                 {copy.body}
                               </p>
                             </div>

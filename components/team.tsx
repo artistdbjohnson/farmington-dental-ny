@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { teamPlates } from "@/lib/copy";
+import { SECTION_PAD } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 export function Team() {
   const { t } = usePrefs();
 
   return (
-    <section id="team" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+    <section id="team" className={SECTION_PAD}>
       <div className="mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.meetTeam}
@@ -24,7 +25,7 @@ export function Team() {
               alt={`${teamPlates.doctor.name}, ${teamPlates.doctor.title}`}
               fill
               sizes="(min-width: 768px) 420px, 100vw"
-              className="object-cover object-[50%_18%]"
+              className="object-cover object-[50%_18%] contrast-[1.03] saturate-[1.04]"
             />
           </div>
           <div className="flex flex-col justify-end p-6 sm:p-10">
@@ -49,7 +50,7 @@ export function Team() {
                   alt={person.name}
                   fill
                   sizes="(min-width: 1024px) 220px, 45vw"
-                  className="object-cover object-top"
+                  className="object-cover object-top contrast-[1.03] saturate-[1.04]"
                 />
               </div>
               <p className="px-3 py-3 text-sm font-medium text-[color:var(--ink)]">
@@ -71,7 +72,7 @@ export function Team() {
                   alt={person.name}
                   fill
                   sizes="280px"
-                  className="object-cover object-top"
+                  className="object-cover object-top contrast-[1.03] saturate-[1.04]"
                 />
               </div>
               <p className="px-3 py-3 text-sm font-medium text-[color:var(--ink)]">

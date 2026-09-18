@@ -2,7 +2,9 @@
 
 import { ArrowUpRight, CreditCard, FileText, Shield } from "lucide-react";
 import { ExtLink } from "@/components/ext-link";
+import { Plate } from "@/components/plate";
 import { links } from "@/lib/copy";
+import { SECTION_PAD, sectionMedia } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 const ICONS = [FileText, FileText, Shield];
@@ -11,17 +13,23 @@ export function PatientInfo() {
   const { t } = usePrefs();
 
   return (
-    <section
-      id="patient-info"
-      className="section-shell px-5 py-20 sm:px-8 sm:py-28"
-    >
+    <section id="patient-info" className={SECTION_PAD}>
       <div className="mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.patientInfo}
         </p>
-        <h2 className="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
+        <h2 className="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
           {t.chrome.patientInfo}
         </h2>
+
+        <figure className="liquid-glass mb-8 overflow-hidden rounded-3xl">
+          <Plate
+            src={sectionMedia.patientInfo.src}
+            alt={sectionMedia.patientInfo.alt}
+            className="aspect-[16/8] sm:aspect-[16/6]"
+            sizes="(min-width: 1024px) 1152px, 100vw"
+          />
+        </figure>
 
         <div className="grid gap-4 md:grid-cols-2">
           {t.patientInfo.map((item, index) => {

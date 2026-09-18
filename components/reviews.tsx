@@ -1,5 +1,7 @@
 "use client";
 
+import { Plate } from "@/components/plate";
+import { SECTION_PAD, sectionMedia } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 
 export function Reviews() {
@@ -7,8 +9,19 @@ export function Reviews() {
   const [featured, ...rest] = t.reviews;
 
   return (
-    <section id="reviews" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="reviews" className={`relative overflow-hidden ${SECTION_PAD}`}>
+      <div className="pointer-events-none absolute inset-0">
+        <Plate
+          src={sectionMedia.reviews.src}
+          alt=""
+          className="h-full w-full"
+          imageClassName="object-cover opacity-35 saturate-[0.9]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[color:var(--bg)]/78" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.happyPatients}
         </p>
