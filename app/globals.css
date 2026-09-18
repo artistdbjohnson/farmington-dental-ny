@@ -58,9 +58,7 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(
-    var(--sticky-nav-h) + env(safe-area-inset-top, 0px)
-  );
+  scroll-padding-top: var(--sticky-nav-h);
 }
 
 body {
@@ -146,11 +144,14 @@ html.light .on-hero .liquid-glass::before {
   );
 }
 
-.liquid-glass.liquid-glass-panel {
+.liquid-glass.liquid-glass-panel,
+html.light .liquid-glass.liquid-glass-panel,
+html.light .on-hero .liquid-glass.liquid-glass-panel {
   background: #0b1c28;
   background-blend-mode: normal;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .hero-still {
@@ -189,9 +190,7 @@ html.light .is-stuck .rail-underline {
 
 .section-shell,
 .anchor-under-nav {
-  scroll-margin-top: calc(
-    var(--sticky-nav-h) + env(safe-area-inset-top, 0px)
-  );
+  scroll-margin-top: var(--sticky-nav-h);
 }
 
 .no-scrollbar {

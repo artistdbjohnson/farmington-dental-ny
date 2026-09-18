@@ -1,7 +1,7 @@
 import type { ServiceKey } from "@/lib/copy";
 
 export const SECTION_PAD =
-  "section-shell px-5 pt-6 pb-16 sm:px-8 sm:pt-8 sm:pb-24";
+  "section-shell px-5 pt-4 pb-16 sm:px-8 sm:pt-5 sm:pb-24";
 
 export const serviceMedia: Record<
   ServiceKey,
