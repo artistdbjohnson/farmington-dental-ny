@@ -3,11 +3,19 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExtLink } from "@/components/ext-link";
 import { cn } from "@/lib/cn";
 import { RAIL, links } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
+
+function applyStickyNavHeight(node: HTMLElement) {
+  const height = Math.ceil(node.getBoundingClientRect().height);
+  document.documentElement.style.setProperty(
+    "--sticky-nav-h",
+    `${Math.max(height, 1)}px`,
+  );
+}
 
 export function Chrome({
   scrolled,
@@ -19,6 +27,7 @@ export function Chrome({
   const { t, locale, setLocale, theme, setTheme } = usePrefs();
   const [menuOpen, setMenuOpen] = useState(false);
   const reduce = useReducedMotion();
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -29,12 +38,32 @@ export function Chrome({
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const sync = () => applyStickyNavHeight(header);
+    sync();
+
+    const observer = new ResizeObserver(sync);
+    observer.observe(header);
+    window.addEventListener("resize", sync);
+    window.addEventListener("orientationchange", sync);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", sync);
+      window.removeEventListener("orientationchange", sync);
+    };
+  }, [scrolled, menuOpen]);
+
   const onHero = !scrolled;
 
   return (
     <header
+      ref={headerRef}
       className={cn(
-        "fixed top-0 right-0 left-0 z-50 transition-colors",
+        "fixed top-0 right-0 left-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors",
         onHero ? "on-hero" : "is-stuck",
         scrolled && "bg-[color:var(--bg)]/88 backdrop-blur-md",
       )}
@@ -48,17 +77,22 @@ export function Chrome({
 
       <div
         className={cn(
-          "flex items-center justify-between px-5 sm:px-8",
-          scrolled ? "py-2.5" : "py-5",
+          "grid items-center px-5 sm:px-8",
+          "grid-cols-[minmax(0,1fr)_auto] gap-4 sm:gap-5",
+          "lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-8 xl:gap-10",
+          scrolled ? "py-3" : "py-5",
         )}
       >
-        <a href="#top" className="flex items-center gap-2.5 text-white">
+        <a
+          href="#top"
+          className="z-10 flex min-w-0 items-center gap-2.5 justify-self-start overflow-hidden text-white"
+        >
           <Image
             src="/brand/logo-mark.png"
             alt=""
             width={34}
             height={40}
-            className="h-9 w-auto"
+            className="h-9 w-auto shrink-0"
           />
           <motion.span
             initial={false}
@@ -71,7 +105,7 @@ export function Chrome({
               duration: reduce ? 0 : 0.38,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="overflow-hidden"
+            className="hidden min-w-0 overflow-hidden xl:block"
           >
             <Image
               src="/brand/logo-wordmark.png"
@@ -84,7 +118,7 @@ export function Chrome({
         </a>
 
         <nav
-          className="liquid-glass hidden items-center gap-1 rounded-xl px-2 py-2 md:flex"
+          className="liquid-glass hidden items-center justify-self-center gap-1 rounded-xl px-4 py-2 lg:flex xl:px-5"
           aria-label="Primary"
         >
           {RAIL.map((item) => {
@@ -94,7 +128,7 @@ export function Chrome({
                 key={item.id}
                 href={`#${item.id}`}
                 className={cn(
-                  "relative flex items-center rounded-md px-3 py-1.5 text-sm transition-colors",
+                  "relative flex items-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm transition-colors",
                   onHero
                     ? current
                       ? "bg-white/15 text-white"
@@ -120,7 +154,7 @@ export function Chrome({
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center justify-self-end gap-3 lg:flex xl:gap-4">
           <PrefsCluster
             locale={locale}
             theme={theme}
@@ -132,7 +166,7 @@ export function Chrome({
           <a
             href={links.phoneTel}
             className={cn(
-              "liquid-glass rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-white/5",
+              "liquid-glass shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-white/5",
               onHero ? "text-white" : "text-[color:var(--ink)]",
             )}
           >
@@ -141,7 +175,7 @@ export function Chrome({
           <ExtLink
             href={links.newPatientForms}
             className={cn(
-              "hidden rounded-full px-4 py-2.5 text-sm font-medium transition-colors lg:inline-flex",
+              "hidden shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-medium transition-colors 2xl:inline-flex",
               onHero
                 ? "bg-white text-black hover:bg-white/90"
                 : "bg-navy text-white hover:bg-blue dark:bg-white dark:text-black dark:hover:bg-white/90",
@@ -154,7 +188,7 @@ export function Chrome({
         <button
           type="button"
           className={cn(
-            "liquid-glass rounded-lg p-2 md:hidden",
+            "liquid-glass justify-self-end rounded-lg p-2 lg:hidden",
             onHero ? "text-white" : "text-[color:var(--ink)]",
           )}
           aria-label={menuOpen ? t.chrome.close : t.chrome.menu}
@@ -165,13 +199,13 @@ export function Chrome({
       </div>
 
       {scrolled ? (
-        <div className="no-scrollbar flex gap-1 overflow-x-auto px-4 pb-2 md:hidden">
+        <div className="no-scrollbar flex gap-1.5 overflow-x-auto px-5 pt-3 pb-3.5 lg:hidden">
           {RAIL.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               className={cn(
-                "relative shrink-0 rounded-full px-3 py-1 text-xs transition-colors",
+                "relative shrink-0 rounded-full px-3 py-1.5 text-xs transition-colors",
                 active === item.id
                   ? "text-[color:var(--ink)]"
                   : "text-[color:var(--muted)]",
@@ -193,7 +227,7 @@ export function Chrome({
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
             transition={{ duration: reduce ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="on-hero absolute top-[72px] right-4 left-4 z-30 md:hidden"
+            className="on-hero absolute top-full right-4 left-4 z-30 lg:hidden"
           >
             <div className="liquid-glass liquid-glass-panel flex flex-col gap-1 rounded-2xl p-4">
             {RAIL.map((item) => (
@@ -219,7 +253,7 @@ export function Chrome({
             <div className="mt-2 flex gap-2 border-t border-white/10 pt-3">
               <a
                 href={links.phoneTel}
-                className="flex-1 rounded-full border border-white/35 bg-white/10 px-4 py-2.5 text-center text-sm font-medium text-white"
+                className="flex-1 rounded-full border border-white/35 bg-white/10 px-4 py-2.5 text-center text-sm font-medium whitespace-nowrap text-white"
               >
                 {t.chrome.callNow}
               </a>
@@ -256,7 +290,7 @@ function PrefsCluster({
   return (
     <div
       className={cn(
-        "liquid-glass flex items-center gap-0.5 rounded-full p-1",
+        "liquid-glass flex shrink-0 items-center gap-0.5 rounded-full p-1",
         onHero ? "text-white" : "text-[color:var(--ink)]",
       )}
       role="group"

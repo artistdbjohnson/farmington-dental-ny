@@ -52,8 +52,15 @@ html.dark {
   font-family: var(--font-sans);
 }
 
+:root {
+  --sticky-nav-h: 4.75rem;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(
+    var(--sticky-nav-h) + env(safe-area-inset-top, 0px)
+  );
 }
 
 body {
@@ -180,8 +187,11 @@ html.light .is-stuck .rail-underline {
   );
 }
 
-.section-shell {
-  scroll-margin-top: 6.5rem;
+.section-shell,
+.anchor-under-nav {
+  scroll-margin-top: calc(
+    var(--sticky-nav-h) + env(safe-area-inset-top, 0px)
+  );
 }
 
 .no-scrollbar {
