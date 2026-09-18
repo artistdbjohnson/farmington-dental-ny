@@ -199,7 +199,7 @@ export function Chrome({
       </div>
 
       {scrolled ? (
-        <div className="no-scrollbar flex gap-1.5 overflow-x-auto px-5 pt-3 pb-3.5 lg:hidden">
+        <div className="no-scrollbar flex gap-1.5 overflow-x-auto border-t border-[color:var(--line)] px-5 pt-3.5 pb-3.5 lg:hidden">
           {RAIL.map((item) => (
             <a
               key={item.id}
