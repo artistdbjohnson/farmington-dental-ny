@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section id="top" className="relative h-svh min-h-[640px] overflow-hidden">
       <Image
-        src="/brand/hero-blur.jpg"
+        src="/media/intro-poster.jpg"
         alt=""
         fill
         priority

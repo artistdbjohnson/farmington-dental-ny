@@ -68,6 +68,7 @@ Question: ceremonial entry for a single-location dental Path A.
 | Scroll hero only | Runner-up | Immediate CTAs, max variety. Loses the ceremonial floor the lock asked to match. |
 | Micro-loader | Reject | App chrome. Wrong register for a local clinic. |
 
-**Locked open:** still-poster splash → soft multi-second fade into the existing equilibrium hero.  
+**Locked open:** still-poster splash → soft multi-second fade into the equilibrium hero.  
+The hero still is the same Grok operatory-dawn plate so the fade stays one world (the old blue blur is retired as the hero plate).  
 Nav gutters, measured hash scroll, and ad-grade section/service plates stay in scope.  
 Grok Imagine stills produced for the vote; the assembled MP4 is retired so Farmington does not ship a BRA-shaped video entry.
