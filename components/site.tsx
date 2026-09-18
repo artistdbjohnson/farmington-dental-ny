@@ -9,8 +9,10 @@ import { Hero } from "@/components/hero";
 import { PatientInfo } from "@/components/patient-info";
 import { Reviews } from "@/components/reviews";
 import { Services } from "@/components/services";
+import { Splash } from "@/components/splash";
 import { Team } from "@/components/team";
 import { RAIL } from "@/lib/copy";
+import { scrollToAnchor } from "@/lib/scroll";
 
 export function Site() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,15 +40,25 @@ export function Site() {
           setActive(visible.target.id);
         }
       },
-      { rootMargin: "-28% 0px -58% 0px", threshold: [0.12, 0.28, 0.5] },
+      { rootMargin: "-22% 0px -62% 0px", threshold: [0.12, 0.28, 0.5] },
     );
 
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash || hash === "top" || hash === "content") return;
+    const frame = window.requestAnimationFrame(() => {
+      scrollToAnchor(hash, "auto");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <>
+      <Splash />
       <Chrome scrolled={scrolled} active={active} />
       <main id="content">
         <Hero />

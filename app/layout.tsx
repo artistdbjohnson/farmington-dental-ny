@@ -27,6 +27,15 @@ const bootScript = `
     else { root.classList.add('dark'); root.classList.remove('light'); }
     root.lang = l === 'pt' ? 'pt' : 'en';
     root.style.colorScheme = t === 'light' ? 'light' : 'dark';
+    var seen = false;
+    try { seen = sessionStorage.getItem('fd-intro-seen') === '1'; } catch (e) {}
+    if (location.hash || seen) {
+      root.setAttribute('data-intro', 'skip');
+      root.style.overflow = '';
+    } else {
+      root.setAttribute('data-intro', 'show');
+      root.style.overflow = 'hidden';
+    }
   } catch (e) {}
 })();
 `;
@@ -39,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <link rel="preload" as="image" href="/media/intro-poster.jpg" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body className="min-h-full flex flex-col font-sans">

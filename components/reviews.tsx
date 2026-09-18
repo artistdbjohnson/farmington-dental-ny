@@ -1,5 +1,7 @@
 "use client";
 
+import { PhotoPlate } from "@/components/photo-plate";
+import { sectionPlates } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
 
 export function Reviews() {
@@ -7,8 +9,8 @@ export function Reviews() {
   const [featured, ...rest] = t.reviews;
 
   return (
-    <section id="reviews" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+      <div id="reviews" className="section-anchor mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.happyPatients}
         </p>
@@ -16,11 +18,22 @@ export function Reviews() {
           {t.chrome.happyPatients}
         </h2>
 
-        <article className="liquid-glass mb-4 rounded-3xl p-6 sm:p-8">
-          <p className="text-lg leading-relaxed text-[color:var(--ink)] sm:text-xl">
-            “{featured.quote}”
-          </p>
-          <p className="mt-5 text-sm text-[color:var(--muted)]">~ {featured.by}</p>
+        <article className="liquid-glass mb-4 grid overflow-hidden rounded-3xl md:grid-cols-[0.78fr_1.22fr]">
+          <PhotoPlate
+            src={sectionPlates.reviews}
+            alt=""
+            sizes="(min-width: 768px) 420px, 100vw"
+            className="aspect-[4/5] md:aspect-auto md:min-h-[360px]"
+            imageClassName="object-cover object-top"
+          />
+          <div className="flex flex-col justify-end p-6 sm:p-8">
+            <p className="text-lg leading-relaxed text-[color:var(--ink)] sm:text-xl">
+              “{featured.quote}”
+            </p>
+            <p className="mt-5 text-sm text-[color:var(--muted)]">
+              ~ {featured.by}
+            </p>
+          </div>
         </article>
 
         <div className="grid gap-4 md:grid-cols-2">

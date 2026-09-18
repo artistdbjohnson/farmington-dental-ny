@@ -48,33 +48,46 @@ export type ServiceKey = (typeof SERVICE_KEYS)[number];
 
 export const servicePlates: Record<
   ServiceKey,
-  { plate: string; nest: string }
+  { plate: string; nest: string; src: string }
 > = {
   "Preventative Care": {
     plate: "from-[#0C3C60] via-[#39729B] to-[#689ADE]",
     nest: "from-[#0C3C60]/80 to-[#86A69E]/40",
+    src: "/media/01-preventative.png",
   },
   "Cosmetic Dentistry": {
     plate: "from-[#1D67CD] via-[#689ADE] to-[#DAEDFF]",
     nest: "from-[#1D67CD]/70 to-[#86A69E]/35",
+    src: "/media/02-cosmetic.png",
   },
   "Restorative Dentistry": {
     plate: "from-[#0C3C60] via-[#86A69E] to-[#39729B]",
     nest: "from-[#0C3C60]/75 to-[#689ADE]/35",
+    src: "/media/03-restorative.png",
   },
   "Emergency Dentistry": {
     plate: "from-[#1D67CD] via-[#0C3C60] to-[#39729B]",
     nest: "from-[#1D67CD]/70 to-[#0C3C60]/80",
+    src: "/media/04-emergency.png",
   },
   "Pediatric Dentistry": {
     plate: "from-[#689ADE] via-[#86A69E] to-[#DAEDFF]",
     nest: "from-[#689ADE]/50 to-[#86A69E]/40",
+    src: "/media/05-pediatric.png",
   },
   "Endodontic Care (Root Canals)": {
     plate: "from-[#39729B] via-[#0C3C60] to-[#86A69E]",
     nest: "from-[#39729B]/70 to-[#0C3C60]/75",
+    src: "/media/06-endodontic.png",
   },
 };
+
+export const sectionPlates = {
+  about: "/media/about-clinic.jpg",
+  reviews: "/media/reviews.jpg",
+  patientInfo: "/media/patient-info.jpg",
+  contact: "/media/contact.jpg",
+} as const;
 
 type RailId =
   | "about"
@@ -213,6 +226,7 @@ export type Dictionary = {
     light: string;
     dark: string;
     builtBy: string;
+    enterSite: string;
     rail: Record<RailId, string>;
   };
 };
@@ -243,6 +257,7 @@ const chromeEn: Dictionary["chrome"] = {
   light: "Light",
   dark: "Dark",
   builtBy: "built by dglxss",
+  enterSite: "Enter Site",
   rail: {
     about: "About",
     services: "Services",
@@ -279,6 +294,7 @@ const chromePt: Dictionary["chrome"] = {
   light: "Claro",
   dark: "Escuro",
   builtBy: "construído por dglxss",
+  enterSite: "Entrar no site",
   rail: {
     about: "Sobre",
     services: "Serviços",

@@ -52,8 +52,21 @@ html.dark {
   font-family: var(--font-sans);
 }
 
+:root {
+  --sticky-nav-height: 7.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --sticky-nav-height: 5.5rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(
+    var(--sticky-nav-height) + env(safe-area-inset-top, 0px)
+  );
 }
 
 body {
@@ -180,8 +193,42 @@ html.light .is-stuck .rail-underline {
   );
 }
 
-.section-shell {
-  scroll-margin-top: 6.5rem;
+.section-anchor,
+#about,
+#services,
+#team,
+#reviews,
+#patient-info,
+#contact,
+#content {
+  /* Same token as html scroll-padding-top. JS nav uses measured header height
+     so these two do not stack into an empty band above the heading. */
+  scroll-margin-top: calc(
+    var(--sticky-nav-height) + env(safe-area-inset-top, 0px)
+  );
+}
+
+#top {
+  scroll-margin-top: 0;
+}
+
+.photo-plate-grade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 60, 96, 0.02) 0%,
+    rgba(7, 21, 32, 0.1) 100%
+  );
+}
+
+html.light .photo-plate-grade {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 60, 96, 0.03) 0%,
+    rgba(12, 60, 96, 0.12) 100%
+  );
 }
 
 .no-scrollbar {
@@ -209,5 +256,137 @@ html.light .is-stuck .rail-underline {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Keep the BRA-style multi-second poster fade on the splash overlay. */
+  .splash-overlay {
+    transition-duration: 3.5s !important;
+    animation-duration: unset !important;
+  }
+
+  .splash-chrome {
+    animation: none !important;
+  }
+}
+
+html[data-intro="show"] {
+  overflow: hidden;
+}
+
+html[data-intro="show"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #07151f url("/media/intro-poster.jpg") center / cover no-repeat;
+  pointer-events: none;
+}
+
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #07151f url("/media/intro-poster.jpg") center / cover no-repeat;
+  transition: opacity 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.splash-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 21, 32, 0.32) 0%,
+    rgba(7, 21, 32, 0) 28%,
+    rgba(7, 21, 32, 0) 58%,
+    rgba(7, 21, 32, 0.55) 100%
+  );
+}
+
+.splash-chrome {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px 56px;
+  text-align: center;
+  animation: splashIn 1.4s cubic-bezier(0.22, 0.7, 0.3, 1) 0.5s both;
+}
+
+.splash-mark {
+  width: 58px;
+  height: auto;
+  filter: drop-shadow(0 6px 18px rgba(7, 21, 32, 0.4));
+}
+
+.splash-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  line-height: 1;
+}
+
+.splash-wordmark-lead {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #daedff;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(7, 21, 32, 0.5);
+}
+
+.splash-wordmark-sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  color: #689ade;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(7, 21, 32, 0.5);
+}
+
+.splash-tagline {
+  margin: 2px 0 8px;
+  max-width: 28rem;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: rgba(218, 237, 255, 0.92);
+  text-shadow: 0 2px 14px rgba(7, 21, 32, 0.55);
+}
+
+.splash-enter {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #daedff;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(7, 21, 32, 0.55);
+  border-bottom: 1px solid rgba(218, 237, 255, 0.45);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.splash-enter:hover,
+.splash-enter:focus-visible {
+  color: #689ade;
+  border-bottom-color: #689ade;
+}
+
+@keyframes splashIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

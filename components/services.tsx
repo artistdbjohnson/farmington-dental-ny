@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
+import { PhotoPlate } from "@/components/photo-plate";
 import { cn } from "@/lib/cn";
 import {
   SERVICE_KEYS,
@@ -33,8 +34,8 @@ export function Services() {
   const [open, setOpen] = useState<ServiceKey | "">("Preventative Care");
 
   return (
-    <section id="services" className="section-shell px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
+      <div id="services" className="section-anchor mx-auto max-w-6xl">
         <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
           {t.chrome.rail.services}
         </p>
@@ -48,6 +49,7 @@ export function Services() {
               const Icon = ICONS[key];
               const isOpen = open === key;
               const copy = t.services[key];
+              const plate = servicePlates[key];
               return (
                 <article
                   key={key}
@@ -57,15 +59,24 @@ export function Services() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(isOpen ? "" : key)}
-                    className="flex w-full items-center gap-3 px-4 py-4 text-left sm:px-5"
+                    className="flex w-full items-center gap-3 px-3 py-3 text-left sm:px-4 sm:py-3.5"
                   >
-                    <span
-                      className={cn(
-                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br text-white",
-                        servicePlates[key].plate,
-                      )}
-                    >
-                      <Icon size={18} strokeWidth={1.6} />
+                    <span className="relative h-14 w-[4.75rem] shrink-0 overflow-hidden rounded-xl sm:h-16 sm:w-24">
+                      <PhotoPlate
+                        src={plate.src}
+                        alt=""
+                        sizes="96px"
+                        className="h-full w-full"
+                        imageClassName="object-cover"
+                      />
+                      <span
+                        className={cn(
+                          "absolute bottom-1 left-1 flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br text-white",
+                          plate.plate,
+                        )}
+                      >
+                        <Icon size={14} strokeWidth={1.6} />
+                      </span>
                     </span>
                     <span className="flex-1">
                       <span className="block text-[11px] tracking-[0.18em] text-[color:var(--muted)] uppercase">
@@ -102,10 +113,26 @@ export function Services() {
                         className="overflow-hidden"
                       >
                         <div className="px-3 pb-3 sm:px-4 sm:pb-4">
+                          <div className="relative mb-3 overflow-hidden rounded-xl">
+                            <PhotoPlate
+                              src={plate.src}
+                              alt=""
+                              sizes="(min-width: 768px) 960px, 100vw"
+                              className="aspect-[16/9] min-h-[180px] sm:min-h-[240px]"
+                            />
+                            <span
+                              className={cn(
+                                "absolute top-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br text-white shadow-sm",
+                                plate.plate,
+                              )}
+                            >
+                              <Icon size={15} strokeWidth={1.6} />
+                            </span>
+                          </div>
                           <div
                             className={cn(
                               "liquid-glass overflow-hidden rounded-xl bg-linear-to-br p-[1px]",
-                              servicePlates[key].nest,
+                              plate.nest,
                             )}
                           >
                             <div className="rounded-[10px] bg-[color:var(--bg-elev)]/55 p-4 sm:p-5">
