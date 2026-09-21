@@ -198,6 +198,7 @@ html.light .is-stuck .rail-underline {
 #services,
 #team,
 #reviews,
+#instagram,
 #patient-info,
 #contact,
 #content {
@@ -240,6 +241,59 @@ html.light .photo-plate-grade {
   display: none;
 }
 
+.ig-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+}
+
+.ig-track {
+  display: flex;
+  width: max-content;
+  animation: ig-scroll 72s linear infinite;
+  will-change: transform;
+}
+
+.ig-marquee:hover .ig-track,
+.ig-marquee:focus-within .ig-track {
+  animation-play-state: paused;
+}
+
+.ig-set {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0 0.75rem 0 0;
+  list-style: none;
+}
+
+.ig-card {
+  position: relative;
+  width: min(68vw, 240px);
+  aspect-ratio: 1;
+  flex: none;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.ig-card:focus-within {
+  box-shadow: 0 0 0 2px #689ade;
+}
+
+@keyframes ig-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -266,6 +320,21 @@ html.light .photo-plate-grade {
 
   .splash-chrome {
     animation: none !important;
+  }
+
+  .ig-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    padding-inline: 1.25rem;
+  }
+
+  .ig-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .ig-set[aria-hidden="true"] {
+    display: none !important;
   }
 }
 

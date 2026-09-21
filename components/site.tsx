@@ -9,6 +9,7 @@ import { Hero } from "@/components/hero";
 import { PatientInfo } from "@/components/patient-info";
 import { Reviews } from "@/components/reviews";
 import { Services } from "@/components/services";
+import { Social } from "@/components/social";
 import { Splash } from "@/components/splash";
 import { Team } from "@/components/team";
 import { RAIL } from "@/lib/copy";
@@ -66,6 +67,7 @@ export function Site() {
         <Services />
         <Team />
         <Reviews />
+        <Social />
         <PatientInfo />
         <Contact />
       </main>

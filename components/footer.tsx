@@ -48,6 +48,14 @@ export function Footer() {
           <ExtLink href={links.privacy} className="hover:text-[color:var(--ink)]">
             {t.patientInfo[2].label}
           </ExtLink>
+          <p className="mt-3">
+            <ExtLink
+              href={links.instagram}
+              className="hover:text-[color:var(--ink)]"
+            >
+              {t.chrome.instagram}
+            </ExtLink>
+          </p>
           <p className="mt-3">{t.chrome.builtBy}</p>
         </div>
       </div>

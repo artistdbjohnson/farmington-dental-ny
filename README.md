@@ -28,3 +28,4 @@ npm run lint
 - Theme and locale persist in `localStorage` (`fd-theme`, `fd-locale`).
 - `/privacy` redirects to the live HIPAA notice form.
 - `vercel.json` is exactly `{ "cleanUrls": true, "trailingSlash": false }`.
+- Instagram strip (`#instagram`) uses a local snapshot of public @farmingtondental posts and links out to each post. Lifestyle plates in `public/media` are generated film stills. Staff portraits in `public/brand` are unchanged.
