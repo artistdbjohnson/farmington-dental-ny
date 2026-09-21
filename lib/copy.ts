@@ -15,6 +15,7 @@ export const links = {
   newPatientForms: source.patientInfo[0].href,
   existingPatient: source.patientInfo[1].href,
   privacy: source.patientInfo[2].href,
+  instagram: "https://www.instagram.com/farmingtondental/",
 } as const;
 
 export const teamPlates = {
@@ -53,32 +54,32 @@ export const servicePlates: Record<
   "Preventative Care": {
     plate: "from-[#0C3C60] via-[#39729B] to-[#689ADE]",
     nest: "from-[#0C3C60]/80 to-[#86A69E]/40",
-    src: "/media/01-preventative.png",
+    src: "/media/01-preventative.jpg",
   },
   "Cosmetic Dentistry": {
     plate: "from-[#1D67CD] via-[#689ADE] to-[#DAEDFF]",
     nest: "from-[#1D67CD]/70 to-[#86A69E]/35",
-    src: "/media/02-cosmetic.png",
+    src: "/media/02-cosmetic.jpg",
   },
   "Restorative Dentistry": {
     plate: "from-[#0C3C60] via-[#86A69E] to-[#39729B]",
     nest: "from-[#0C3C60]/75 to-[#689ADE]/35",
-    src: "/media/03-restorative.png",
+    src: "/media/03-restorative.jpg",
   },
   "Emergency Dentistry": {
     plate: "from-[#1D67CD] via-[#0C3C60] to-[#39729B]",
     nest: "from-[#1D67CD]/70 to-[#0C3C60]/80",
-    src: "/media/04-emergency.png",
+    src: "/media/04-emergency.jpg",
   },
   "Pediatric Dentistry": {
     plate: "from-[#689ADE] via-[#86A69E] to-[#DAEDFF]",
     nest: "from-[#689ADE]/50 to-[#86A69E]/40",
-    src: "/media/05-pediatric.png",
+    src: "/media/05-pediatric.jpg",
   },
   "Endodontic Care (Root Canals)": {
     plate: "from-[#39729B] via-[#0C3C60] to-[#86A69E]",
     nest: "from-[#39729B]/70 to-[#0C3C60]/75",
-    src: "/media/06-endodontic.png",
+    src: "/media/06-endodontic.jpg",
   },
 };
 
@@ -94,6 +95,7 @@ type RailId =
   | "services"
   | "team"
   | "reviews"
+  | "instagram"
   | "patient-info"
   | "contact";
 
@@ -102,6 +104,7 @@ export const RAIL: { id: RailId; en: string; pt: string }[] = [
   { id: "services", en: "Services", pt: "Serviços" },
   { id: "team", en: "Team", pt: "Equipa" },
   { id: "reviews", en: "Reviews", pt: "Avaliações" },
+  { id: "instagram", en: "Instagram", pt: "Instagram" },
   { id: "patient-info", en: "Patient Info", pt: "Info do paciente" },
   { id: "contact", en: "Contact", pt: "Contacto" },
 ];
@@ -227,6 +230,10 @@ export type Dictionary = {
     dark: string;
     builtBy: string;
     enterSite: string;
+    instagram: string;
+    instagramAccount: string;
+    instagramOpen: string;
+    instagramFeed: string;
     rail: Record<RailId, string>;
   };
 };
@@ -258,11 +265,16 @@ const chromeEn: Dictionary["chrome"] = {
   dark: "Dark",
   builtBy: "built by dglxss",
   enterSite: "Enter Site",
+  instagram: "Instagram",
+  instagramAccount: "farmingtondental",
+  instagramOpen: "Open on Instagram",
+  instagramFeed: "Recent public posts from Farmington Dental on Instagram",
   rail: {
     about: "About",
     services: "Services",
     team: "Team",
     reviews: "Reviews",
+    instagram: "Instagram",
     "patient-info": "Patient Info",
     contact: "Contact",
   },
@@ -295,11 +307,17 @@ const chromePt: Dictionary["chrome"] = {
   dark: "Escuro",
   builtBy: "construído por dglxss",
   enterSite: "Entrar no site",
+  instagram: "Instagram",
+  instagramAccount: "farmingtondental",
+  instagramOpen: "Abrir no Instagram",
+  instagramFeed:
+    "Publicações públicas recentes da Farmington Dental no Instagram",
   rail: {
     about: "Sobre",
     services: "Serviços",
     team: "Equipa",
     reviews: "Avaliações",
+    instagram: "Instagram",
     "patient-info": "Info do paciente",
     contact: "Contacto",
   },

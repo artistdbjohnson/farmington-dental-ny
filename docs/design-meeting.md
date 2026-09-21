@@ -74,4 +74,11 @@ Nav gutters, measured hash scroll, and ad-grade section/service plates stay in s
 Grok Imagine stills produced for the vote; the assembled MP4 is retired so Farmington does not ship a BRA-shaped video entry.
 
 ## Identity lock — DEFAULT (2026-09-18)
-Published Farmington staff portraits are the only clinician faces. Grok Imagine retextures those exact people into Team / About (and any plate that needs a clinician). No invented doctor faces when a source portrait exists. Editorial service plates stay as-is.
+Published Farmington staff portraits are the only clinician faces. Grok Imagine retextures those exact people into Team / About (and any plate that needs a clinician). No invented doctor faces when a source portrait exists.
+
+## Social strip + plate pass (2026-09-21) — Reed / Lux
+Doug: kill corporate hallway walks and posed scrub teams. Target look is a window-lit, film, real-skin smile (the attached close-up). Staff identity in `public/brand/*` stays untouched.
+
+- `#instagram` sits between Reviews and Patient Info, and on the section rail. Horizontal marquee, pause on hover and focus. `prefers-reduced-motion` drops the animation and leaves a manual scroller (the global reduced-motion rule would otherwise snap the track to -50%).
+- Tiles are a local snapshot of public posts from https://www.instagram.com/farmingtondental/ (CDN URLs expire). Each tile links to that live post. No invented captions, handles, likes, or testimonials. Footer carries the same profile link.
+- `public/media/*` lifestyle, service, hero, and support plates that read as generic dental stock are replaced with generated film stills (medium). They are craft stand-ins: not patients, not staff, not Dr. Sturn. The empty operatory hero/splash still is retired with them so the fade stays one world.
