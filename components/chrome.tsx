@@ -65,7 +65,7 @@ export function Chrome({
       className={cn(
         "fixed top-0 right-0 left-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors",
         onHero ? "on-hero" : "is-stuck",
-        scrolled && "bg-[color:var(--bg)]/88 backdrop-blur-md",
+        scrolled && "border-b border-[color:var(--line)] bg-[color:var(--bg)]",
       )}
     >
       <a

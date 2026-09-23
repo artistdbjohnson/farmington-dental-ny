@@ -42,7 +42,7 @@ export function Hero() {
           </a>
           <ExtLink
             href={links.newPatientForms}
-            className="liquid-glass rounded-full px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5 sm:px-7 sm:text-base"
+            className="rounded-full border border-white/40 bg-transparent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:px-7 sm:text-base"
           >
             {t.chrome.patientForms}
           </ExtLink>

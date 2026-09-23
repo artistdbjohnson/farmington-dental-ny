@@ -131,11 +131,11 @@ export function Services() {
                           </div>
                           <div
                             className={cn(
-                              "liquid-glass overflow-hidden rounded-xl bg-linear-to-br p-[1px]",
+                              "overflow-hidden rounded-xl bg-linear-to-br p-[1px]",
                               plate.nest,
                             )}
                           >
-                            <div className="rounded-[10px] bg-[color:var(--bg-elev)]/55 p-4 sm:p-5">
+                            <div className="rounded-[10px] bg-[color:var(--bg)] p-4 sm:p-5">
                               <p className="text-sm leading-relaxed text-[color:var(--muted)] sm:text-[15px]">
                                 {copy.body}
                               </p>
