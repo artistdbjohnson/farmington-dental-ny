@@ -403,3 +403,44 @@ html[data-intro="show"] body::before {
     transform: none;
   }
 }
+
+/* Threshold — section titles and service follow-through.
+   See docs/motion-meeting.md. No scale, no blur. */
+@keyframes threshold-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--threshold-rise, 8px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .threshold-settle {
+    --threshold-rise: 8px;
+  }
+
+  .threshold-settle[data-armed="true"]:not([data-settled="true"]) {
+    opacity: 0;
+    transform: translate3d(0, var(--threshold-rise, 8px), 0);
+  }
+
+  .threshold-settle[data-settled="true"] {
+    animation: threshold-in 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .threshold-settle[data-lag="heading"][data-settled="true"] {
+    animation-delay: 0.1s;
+  }
+
+  .threshold-follow {
+    --threshold-rise: 6px;
+    animation: threshold-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .threshold-follow[data-lag="copy"] {
+    animation-delay: 0.12s;
+  }
+}

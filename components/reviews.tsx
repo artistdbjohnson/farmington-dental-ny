@@ -1,6 +1,7 @@
 "use client";
 
 import { PhotoPlate } from "@/components/photo-plate";
+import { SectionHead } from "@/components/section-head";
 import { sectionPlates } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
 
@@ -11,12 +12,12 @@ export function Reviews() {
   return (
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="reviews" className="section-anchor mx-auto max-w-6xl">
-        <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-          {t.chrome.happyPatients}
-        </p>
-        <h2 className="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-          {t.chrome.happyPatients}
-        </h2>
+        <SectionHead
+          anchorId="reviews"
+          kicker={t.chrome.happyPatients}
+          title={t.chrome.happyPatients}
+          titleClassName="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+        />
 
         <article className="liquid-glass mb-4 grid overflow-hidden rounded-3xl md:grid-cols-[0.78fr_1.22fr]">
           <PhotoPlate

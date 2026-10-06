@@ -3,6 +3,7 @@
 import { Check } from "lucide-react";
 import Image from "next/image";
 import { PhotoPlate } from "@/components/photo-plate";
+import { SectionHead } from "@/components/section-head";
 import { sectionPlates } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
 
@@ -16,12 +17,12 @@ export function About() {
       <div id="about" className="section-anchor mx-auto max-w-6xl">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-              {t.aboutEyebrow}
-            </p>
-            <h2 className="mb-3 text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-              {t.aboutTitle}
-            </h2>
+            <SectionHead
+              anchorId="about"
+              kicker={t.aboutEyebrow}
+              title={t.aboutTitle}
+              titleClassName="mb-3 text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+            />
             <p className="mb-6 text-lg text-sky">{t.aboutSubtitle}</p>
             <p className="max-w-2xl text-[15px] leading-relaxed text-[color:var(--muted)]">
               {lead}

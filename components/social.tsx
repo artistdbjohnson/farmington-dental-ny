@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ExtLink } from "@/components/ext-link";
+import { SectionHead } from "@/components/section-head";
 import { links } from "@/lib/copy";
 import { instagramPosts } from "@/lib/instagram";
 import { usePrefs } from "@/lib/prefs";
@@ -14,12 +15,12 @@ export function Social() {
       <div id="instagram" className="section-anchor mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-              {t.chrome.instagram}
-            </p>
-            <h2 className="text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-              {t.chrome.instagramAccount}
-            </h2>
+            <SectionHead
+              anchorId="instagram"
+              kicker={t.chrome.instagram}
+              title={t.chrome.instagramAccount}
+              titleClassName="text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+            />
           </div>
           <ExtLink
             href={links.instagram}
