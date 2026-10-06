@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ExtLink } from "@/components/ext-link";
+import { SectionHead } from "@/components/section-head";
 import { PhotoPlate } from "@/components/photo-plate";
 import { links, sectionPlates } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
@@ -25,12 +26,11 @@ export function Contact() {
   return (
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="contact" className="section-anchor mx-auto max-w-6xl">
-        <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-          {t.chrome.contactUs}
-        </p>
-        <h2 className="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-          {t.chrome.contactUs}
-        </h2>
+        <SectionHead
+          kicker={t.chrome.contactUs}
+          title={t.chrome.contactUs}
+          titleClassName="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+        />
 
         <PhotoPlate
           src={sectionPlates.contact}

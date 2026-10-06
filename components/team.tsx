@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { SectionHead } from "@/components/section-head";
 import { teamPlates } from "@/lib/copy";
 import { usePrefs } from "@/lib/prefs";
 
@@ -10,12 +11,11 @@ export function Team() {
   return (
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="team" className="section-anchor mx-auto max-w-6xl">
-        <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-          {t.chrome.meetTeam}
-        </p>
-        <h2 className="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-          {t.chrome.meetTeam}
-        </h2>
+        <SectionHead
+          kicker={t.chrome.meetTeam}
+          title={t.chrome.meetTeam}
+          titleClassName="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+        />
 
         <article className="liquid-glass mb-14 grid overflow-hidden rounded-3xl md:grid-cols-[0.9fr_1.1fr]">
           <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[420px]">

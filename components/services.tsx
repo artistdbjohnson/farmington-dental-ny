@@ -9,8 +9,9 @@ import {
   Siren,
   Sparkles,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { PhotoPlate } from "@/components/photo-plate";
+import { SectionHead } from "@/components/section-head";
 import { cn } from "@/lib/cn";
 import {
   SERVICE_KEYS,
@@ -32,16 +33,16 @@ export function Services() {
   const { t } = usePrefs();
   const reduce = useReducedMotion();
   const [open, setOpen] = useState<ServiceKey | "">("Preventative Care");
+  const [played, setPlayed] = useState<ServiceKey | "">("");
 
   return (
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="services" className="section-anchor mx-auto max-w-6xl">
-        <p className="mb-3 text-xs font-medium tracking-[0.22em] text-steel uppercase">
-          {t.chrome.rail.services}
-        </p>
-        <h2 className="mb-8 max-w-xl text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl">
-          {t.chrome.rail.services}
-        </h2>
+        <SectionHead
+          kicker={t.chrome.rail.services}
+          title={t.chrome.rail.services}
+          titleClassName="mb-8 max-w-xl text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
+        />
 
         <div className="liquid-glass rounded-3xl p-2 sm:p-3">
           <div className="flex flex-col gap-2">
@@ -58,7 +59,11 @@ export function Services() {
                   <button
                     type="button"
                     aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? "" : key)}
+                    onClick={() => {
+                      const next = isOpen ? "" : key;
+                      setPlayed(next);
+                      setOpen(next);
+                    }}
                     className="flex w-full items-center gap-3 px-3 py-3 text-left sm:px-4 sm:py-3.5"
                   >
                     <span className="relative h-14 w-[4.75rem] shrink-0 overflow-hidden rounded-xl sm:h-16 sm:w-24">
@@ -103,8 +108,8 @@ export function Services() {
                     {isOpen ? (
                       <motion.div
                         key={`${key}-panel`}
-                        initial={reduce ? false : { height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
+                        initial={reduce ? false : { height: 0 }}
+                        animate={{ height: "auto" }}
                         exit={reduce ? { opacity: 1 } : { height: 0, opacity: 0 }}
                         transition={{
                           duration: reduce ? 0 : 0.48,
@@ -113,7 +118,10 @@ export function Services() {
                         className="overflow-hidden"
                       >
                         <div className="px-3 pb-3 sm:px-4 sm:pb-4">
-                          <div className="relative mb-3 overflow-hidden rounded-xl">
+                          <PanelFollow
+                            active={played === key && reduce === false}
+                            className="relative mb-3 overflow-hidden rounded-xl"
+                          >
                             <PhotoPlate
                               src={plate.src}
                               alt=""
@@ -128,8 +136,10 @@ export function Services() {
                             >
                               <Icon size={15} strokeWidth={1.6} />
                             </span>
-                          </div>
-                          <div
+                          </PanelFollow>
+                          <PanelFollow
+                            active={played === key && reduce === false}
+                            lag
                             className={cn(
                               "overflow-hidden rounded-xl bg-linear-to-br p-[1px]",
                               plate.nest,
@@ -140,7 +150,7 @@ export function Services() {
                                 {copy.body}
                               </p>
                             </div>
-                          </div>
+                          </PanelFollow>
                         </div>
                       </motion.div>
                     ) : null}
@@ -152,5 +162,28 @@ export function Services() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PanelFollow({
+  active,
+  lag,
+  className,
+  children,
+}: {
+  active: boolean;
+  lag?: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
+  const [play] = useState(active);
+
+  return (
+    <div
+      className={cn(className, play && "threshold-follow")}
+      data-lag={play && lag ? "copy" : undefined}
+    >
+      {children}
+    </div>
   );
 }
