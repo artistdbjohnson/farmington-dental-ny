@@ -18,6 +18,7 @@ export function About() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <SectionHead
+              anchorId="about"
               kicker={t.aboutEyebrow}
               title={t.aboutTitle}
               titleClassName="mb-3 text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"

@@ -27,6 +27,7 @@ export function Contact() {
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="contact" className="section-anchor mx-auto max-w-6xl">
         <SectionHead
+          anchorId="contact"
           kicker={t.chrome.contactUs}
           title={t.chrome.contactUs}
           titleClassName="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"

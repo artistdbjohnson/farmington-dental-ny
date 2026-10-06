@@ -16,6 +16,7 @@ export function PatientInfo() {
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="patient-info" className="section-anchor mx-auto max-w-6xl">
         <SectionHead
+          anchorId="patient-info"
           kicker={t.chrome.patientInfo}
           title={t.chrome.patientInfo}
           titleClassName="mb-8 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"

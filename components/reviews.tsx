@@ -13,6 +13,7 @@ export function Reviews() {
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="reviews" className="section-anchor mx-auto max-w-6xl">
         <SectionHead
+          anchorId="reviews"
           kicker={t.chrome.happyPatients}
           title={t.chrome.happyPatients}
           titleClassName="mb-10 text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"

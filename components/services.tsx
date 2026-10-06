@@ -39,6 +39,7 @@ export function Services() {
     <section className="section-shell px-5 py-20 sm:px-8 sm:py-28">
       <div id="services" className="section-anchor mx-auto max-w-6xl">
         <SectionHead
+          anchorId="services"
           kicker={t.chrome.rail.services}
           title={t.chrome.rail.services}
           titleClassName="mb-8 max-w-xl text-3xl leading-tight font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"

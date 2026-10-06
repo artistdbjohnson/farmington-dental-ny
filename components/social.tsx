@@ -16,6 +16,7 @@ export function Social() {
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <SectionHead
+              anchorId="instagram"
               kicker={t.chrome.instagram}
               title={t.chrome.instagramAccount}
               titleClassName="text-3xl font-medium tracking-tight text-[color:var(--ink)] sm:text-4xl"
